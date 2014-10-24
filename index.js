@@ -8,7 +8,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, resp) {
-  response.send('Hello World!');
+  resp.send('Hello World!');
 });
 
 app.get('/tiles/:z/:x/:y', function(req, resp) {
@@ -33,7 +33,7 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
   var redirect = req.query.redirect ? true : false;
 
   if (redirect) {
-    response.redirect(url);
+    resp.redirect(url);
   } else {
     req.pipe(request(url)).pipe(resp);
   }
