@@ -24,11 +24,11 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
   var bbox = polygonToBbox(polygon);
 
   var url = req.query.url;
-  url += ('&bbox=' + encodeURIComponent(bbox.join(',')));
-  url += '&bboxSR=4326';
-  url += '&size=' + encodeURIComponent('256,256');
-  url += '&imageSR=3857';
-  url += '&f=image';
+  url += '&bbox=' + encodeURIComponent(bbox.join(','));
+  for (var key in url_parameters) {
+    var value = url_parameters[key];
+    url += '&' + key + '=' + value;
+  }
 
   var redirect = req.query.redirect ? true : false;
 
@@ -38,6 +38,13 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
     req.pipe(request(url)).pipe(resp);
   }
 });
+
+var url_parameters = {
+  'bboxSR': '4326',
+  'size': encodeURIComponent('256,256'),
+  'imageSR': '3857',
+  'f': 'image'
+};
 
 function polygonToBbox(polygon) {
   var ring = polygon.coordinates[0];
@@ -50,5 +57,5 @@ function polygonToBbox(polygon) {
 }
 
 app.listen(app.get('port'), function() {
-  console.log("Running at port: " + app.get('port'));
+  console.log('Running at port: ' + app.get('port'));
 });
