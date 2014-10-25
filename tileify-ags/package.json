@@ -1,0 +1,27 @@
+{
+  "name": "tileify-ags",
+  "version": "0.0.1",
+  "description": "Fetch slippy map tiles from an uncached ArcGIS Server map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JasonSanford/tileify-ags.git"
+  },
+  "keywords": [
+    "arcgis",
+    "server",
+    "tiles"
+  ],
+  "author": "Jason Sanford",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JasonSanford/tileify-ags/issues"
+  },
+  "homepage": "https://github.com/JasonSanford/tileify-ags",
+  "dependencies": {
+    "tilebelt": "~0.5.3"
+  }
+}
