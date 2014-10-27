@@ -39,7 +39,7 @@ exports.TileifyAGS.prototype.getTileUrl = function(url, x, y, z) {
     var polygon = tile_geojson.geometry;
     var bbox = polygonToBbox(polygon);
 
-    url += '/export?'
+    url += '/export?';
     url += '&bbox=' + encodeURIComponent(bbox.join(','));
     for (var key in this.url_parameters) {
         var value = this.url_parameters[key];
