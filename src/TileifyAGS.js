@@ -15,7 +15,7 @@ exports.TileifyAGS = function (url_param_config) {
         'f': 'image'
     };
 
-    if(url_param_config != null) {
+    if (url_param_config != null) {
         for (var key in url_param_config) {
             var value = url_param_config[key];
             this.url_parameters[key] = value;
@@ -39,8 +39,12 @@ exports.TileifyAGS.prototype.getTileUrl = function(url, x, y, z) {
     var polygon = tile_geojson.geometry;
     var bbox = polygonToBbox(polygon);
 
-    url += '/export?';
-    url += '&bbox=' + encodeURIComponent(bbox.join(','));
+    var url_parts = url.split('/');
+    var mapserver_or_imageserver = url_parts[url_parts.length - 1];
+    var path = mapserver_or_imageserver == 'MapServer' ? 'export' : 'exportImage';
+
+    url += '/' + path + '?';
+    url += 'bbox=' + encodeURIComponent(bbox.join(','));
     for (var key in this.url_parameters) {
         var value = this.url_parameters[key];
         url += '&' + key + '=' + value;
