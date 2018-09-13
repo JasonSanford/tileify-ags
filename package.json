@@ -1,10 +1,10 @@
 {
   "name": "tileify-ags",
   "version": "0.0.1",
-  "description": "Fetch slippy map tiles from an uncached ArcGIS Server map",
+  "description": "Generate URLs for fetching map tiles from an uncached ArcGIS Server map",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/eslint ./index.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,10 @@
   "homepage": "https://github.com/JasonSanford/tileify-ags",
   "dependencies": {
     "tilebelt": "~0.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }
