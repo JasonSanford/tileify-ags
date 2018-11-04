@@ -42,7 +42,12 @@ class TileifyAGS {
     const polygon = tileGeojson.geometry;
     const bbox = polygonToBbox(polygon);
 
-    let fullUrl = `${this.url}/export?`;
+    let fullUrl = this.url;
+    if (this.url.endsWith('ImageServer')) {
+      fullUrl += "/exportImage?";
+    } else {
+      fullUrl += "/export?";
+    }
     fullUrl += `&bbox=${encodeURIComponent(bbox)}`;
 
     Object.entries(this.urlParameters).forEach(([key, value]) => {
